@@ -4,10 +4,9 @@
 .github/**
 .gitignore
 .dockerignore
-*.yml
 *.md
 Dockerfile
 Gopkg.*
-data
-data/**
 docker-compose*
+Makefile
+*.mk

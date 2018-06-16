@@ -6,10 +6,8 @@ services:
     image: sniperkit/swagger-aor-generator:py3.6-alpine
     command: ["make", "demo-all"]
     volumes:
-      - ./shared:/app/shared
+      - ./shared:/shared
     environment:
-      PYTHONPATH_RUNTIME: /app/
-      PYTHONPATH_BUILD: /install/
       PYTHONUNBUFFERED: 1
       PYTHONDONTWRITEBYTECODE: 1
       PYTHONIOENCODING: UTF-8
