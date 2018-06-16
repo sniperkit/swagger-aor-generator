@@ -1,5 +1,5 @@
 from unittest import TestCase
-from swagger_aor_generator.generator import Generator
+from src.generator import Generator
 
 
 class GeneratorTests(TestCase):
