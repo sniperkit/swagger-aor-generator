@@ -1,0 +1,267 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "basePath": "/v-go",
+    "paths": {
+        "/cms/": {
+            "get": {
+                "tags": [
+                    "cms"
+                ],
+                "description": "get CmsArticle",
+                "operationId": "CmsArticleController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CmsArticle"
+                        }
+                    },
+                    "403": {
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "cms"
+                ],
+                "description": "create CmsArticle",
+                "operationId": "CmsArticleController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for CmsArticle content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CmsArticle"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.CmsArticle"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/cms/{id}": {
+            "get": {
+                "tags": [
+                    "cms"
+                ],
+                "description": "get CmsArticle by id",
+                "operationId": "CmsArticleController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CmsArticle"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "cms"
+                ],
+                "description": "update the CmsArticle",
+                "operationId": "CmsArticleController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for CmsArticle content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.CmsArticle"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.CmsArticle"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is not int"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "cms"
+                ],
+                "description": "delete the CmsArticle",
+                "operationId": "CmsArticleController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        ".Auction": {
+            "type": "object"
+        },
+        "models.CmsArticle": {
+            "title": "CmsArticle",
+            "type": "object",
+            "properties": {
+                "ArticleContent": {
+                    "description": "文章内容",
+                    "type": "string"
+                },
+                "ArticleDesc": {
+                    "description": "文章描述",
+                    "type": "string"
+                },
+                "ArticleHits": {
+                    "description": "浏览数",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ArticleKeywords": {
+                    "description": "seo keywords",
+                    "type": "string"
+                },
+                "ArticleStatus": {
+                    "description": "状态;1:已发布;0:未发布;-1:删除",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "ArticleTitle": {
+                    "description": "article标题",
+                    "type": "string"
+                },
+                "Author": {
+                    "description": "作者",
+                    "type": "string"
+                },
+                "CreateTime": {
+                    "description": "创建时间",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "DeleteTime": {
+                    "description": "删除时间",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "IsTop": {
+                    "description": "是否置顶;1:置顶;0:不置顶",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "PublishedTime": {
+                    "description": "发布时间",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "Thumbnail": {
+                    "description": "缩略图",
+                    "type": "string"
+                },
+                "UpdateTime": {
+                    "description": "更新时间",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "user_id": {
+                    "description": "发表者用户id",
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "cms",
+            "description": "CmsArticleController operations for CmsArticle\n"
+        }
+    ]
+}

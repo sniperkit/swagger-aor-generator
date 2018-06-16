@@ -11,7 +11,8 @@ export SHARED_DIR=${SHARED_DIR:-"/shared"}
 export OUTPUT_DIR=${OUTPUT_DIR:-"${SHARED_DIR}/generated"}
 
 export RESOURCES_DIR=${RESOURCES_DIR:-"${SHARED_DIR}/resources"}
-export RESOURCES_FILENAME=${RESOURCES_FILENAME:-"petstore-aor.json"}
+# examples: m2m-cms-swagger.json, eventcity-swagger.json, product-master-swagger.json
+export RESOURCES_FILENAME=${RESOURCES_FILENAME:-"m2m-cms-swagger.json"}
 export RESOURCES_FILEPATH=${RESOURCES_FILEPATH:-"${RESOURCES_DIR}/${RESOURCES_FILENAME}"}
 
 export PYTHON_VERSION="${PYTHON_VERSION:-"3.6"}"
@@ -74,7 +75,7 @@ case "$1" in
 	pwd
 	ls -la
 	ls -l /shared
-	python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir="${OUTPUT_DIR}" --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}"
+	exec python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir=${OUTPUT_DIR} --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}"
 	;;
 
   'demo-aor')
@@ -84,7 +85,7 @@ case "$1" in
 	pwd
 	ls -la
 	ls -l /shared
-	python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir="${OUTPUT_DIR}" --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}"
+	exec python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir=${OUTPUT_DIR} --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}"
 	;;
 
   'demo-aor-permissions')
@@ -94,7 +95,7 @@ case "$1" in
 	pwd
 	ls -la
 	ls -l /shared
-	python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir="${OUTPUT_DIR}" --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}" --permissions
+	exec python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir=${OUTPUT_DIR} --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}" --permissions
 	;;
 
   'demo-ra')
@@ -104,7 +105,7 @@ case "$1" in
 	pwd
 	ls -la
 	ls -l /shared
-	python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir="${OUTPUT_DIR}" --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}"
+	exec python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir=${OUTPUT_DIR} --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}"
 	;;
 
   *)
