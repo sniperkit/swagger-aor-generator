@@ -30,6 +30,11 @@ export PYTHON_VIRTUALVENV_CMD="${PYTHON_VIRTUALVENV_CMD:-"${PYTHON_VIRTUALVENV} 
 export CURRENT_DIR=$(pwd)
 export ENTRY=$1
 
+function ensure() {
+	local output_dir=${1:="/shared/generated/latest"}
+	mkdir -p ${output_dir}
+}
+
 case "$1" in
 
   'bash')
@@ -65,7 +70,7 @@ case "$1" in
   'demo-aor')
 	export ADMIN_VERSION="aor"
 	export OUTPUT_DIR="${GENERATE_DIR}/demo/aor"
-	# clean ${OUTPUT_DIR}
+	ensure ${OUTPUT_DIR}
 	pwd
 	ls -la
 	ls -l /shared
@@ -75,7 +80,7 @@ case "$1" in
   'demo-aor-permissions')
 	export ADMIN_VERSION="aor"
 	export OUTPUT_DIR="${GENERATE_DIR}/demo/aor-perms"
-	# clean ${OUTPUT_DIR}
+	ensure ${OUTPUT_DIR}
 	pwd
 	ls -la
 	ls -l /shared
@@ -85,7 +90,7 @@ case "$1" in
   'demo-ra')
 	export ADMIN_VERSION="ra"
 	export OUTPUT_DIR="${GENERATE_DIR}/demo/react-admin"
-	# clean ${OUTPUT_DIR}
+	ensure ${OUTPUT_DIR}
 	pwd
 	ls -la
 	ls -l /shared

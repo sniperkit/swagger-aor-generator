@@ -46,6 +46,15 @@ docker-build:
 docker-run:
 	@$(DOCKER_EXEC) run --rm -ti -p 3000:3000 -v `pwd`/shared:/shared swagger-aor-generator:python3.6-alpine 
 
+docker-run-demo-aor:
+	@$(DOCKER_EXEC) run --rm -it -p 3000:3000 -v `pwd`/shared:/shared swagger-aor-generator:python3.6-alpine demo-aor
+
+docker-run-demo-aor-permissions:
+	@$(DOCKER_EXEC) run --rm -it -p 3000:3000 -v `pwd`/shared:/shared swagger-aor-generator:python3.6-alpine demo-aor-permissions
+
+docker-run-demo-ra:
+	@$(DOCKER_EXEC) run --rm -it -p 3000:3000 -v `pwd`/shared:/shared swagger-aor-generator:python3.6-alpine demo-ra
+
 docker-run-bash:
 	@$(DOCKER_EXEC) run --rm -ti -p 3000:3000 -v `pwd`/shared:/shared swagger-aor-generator:python3.6-alpine bash
 
@@ -55,12 +64,5 @@ docker-run-virtualenv:
 docker-run-dev:
 	@$(DOCKER_EXEC) run --rm -ti -p 3000:3000 -v `pwd`/shared:/shared swagger-aor-generator:python3.6-alpine dev
 
-docker-run-demo-aor:
-	@$(DOCKER_EXEC) run --rm -it -p 3000:3000 -v `pwd`/shared:/shared swagger-aor-generator:python3.6-alpine demo-aor
 
-docker-run-demo-aor-permissions:
-	@$(DOCKER_EXEC) run --rm -it -p 3000:3000 -v `pwd`/shared:/shared swagger-aor-generator:python3.6-alpine demo-aor-permissions
-
-docker-run-demo-ra:
-	@$(DOCKER_EXEC) run --rm -it -p 3000:3000 -v `pwd`/shared:/shared swagger-aor-generator:python3.6-alpine demo-ra
 

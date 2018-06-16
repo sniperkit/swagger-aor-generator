@@ -50,13 +50,13 @@ ENV HOME=/app \
     LC_ALL=C.UTF-8 \
     LANG=C.UTF-8 \
     \
-    GENERATE_DIR=/app/shared/generated
+    SHARED_DIR=/shared \
+    GENERATE_DIR=/shared/generated
 
 
 COPY --from=builder /install /usr
 COPY src /app
 COPY docker /app/docker
-# COPY shared /app/shared
 
 WORKDIR /app
 
