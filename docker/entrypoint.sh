@@ -67,6 +67,16 @@ case "$1" in
   	exec /bin/bash $@
 	;;
 
+  'demo')
+	export ADMIN_VERSION="$@"
+	export OUTPUT_DIR="${GENERATE_DIR}/demo/$@"
+	ensure ${OUTPUT_DIR}
+	pwd
+	ls -la
+	ls -l /shared
+	python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir="${OUTPUT_DIR}" --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}"
+	;;
+
   'demo-aor')
 	export ADMIN_VERSION="aor"
 	export OUTPUT_DIR="${GENERATE_DIR}/demo/aor"
@@ -74,7 +84,7 @@ case "$1" in
 	pwd
 	ls -la
 	ls -l /shared
-	python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir=${OUTPUT_DIR} --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}" $@
+	python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir="${OUTPUT_DIR}" --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}"
 	;;
 
   'demo-aor-permissions')
@@ -84,7 +94,7 @@ case "$1" in
 	pwd
 	ls -la
 	ls -l /shared
-	python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir=${OUTPUT_DIR} --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}" --permissions $@ $ARGS
+	python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir="${OUTPUT_DIR}" --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}" --permissions
 	;;
 
   'demo-ra')
@@ -94,8 +104,7 @@ case "$1" in
 	pwd
 	ls -la
 	ls -l /shared
-
-	exec python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir=${OUTPUT_DIR} --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}" $@
+	python3 generator.py ${RESOURCES_FILEPATH} ${ADMIN_VERSION} --output-dir="${OUTPUT_DIR}" --module-name="${ADMIN_MODULE_NAME}" --rest-server-url="${ADMIN_REST_SERVER_URL}"
 	;;
 
   *)

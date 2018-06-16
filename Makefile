@@ -38,7 +38,7 @@ demo-ra:
 clean-demo:
 	@rm -rf -p $(GENERATE_DIR)/demo
 
-docker: docker-build docker-run-demo-ra
+docker: docker-build docker-run-demo-aor docker-run-demo-aor-permissions docker-run-demo-ra
 
 docker-build:
 	@$(DOCKER_EXEC) build -t swagger-aor-generator:python3.6-alpine .
